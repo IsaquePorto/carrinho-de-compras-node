@@ -68,7 +68,11 @@ module.exports = (router) => {
     router.delete(baseURL+'/:id', (req, res) => {
 
         const id = req.params.id
-        carrinho.splice(getItemById(id), 1);
+        for (let index = 0; index < carrinho.length; index++) {
+            if (carrinho[index].id === id) {
+                carrinho.splice(index, 1)
+            }
+        }
         res.status(200).send('Deletado!')
     })
 }

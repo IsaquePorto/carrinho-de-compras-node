@@ -23,7 +23,8 @@ module.exports = (router) => {
             id: uuidv4(),
             nome: req.body.nome,
             preco: req.body.preco,
-            quantidade: req.body.quantidade 
+            quantidade: req.body.quantidade,
+            image: req.body.image
         }
         
         database.push(novoCard)
@@ -44,6 +45,9 @@ module.exports = (router) => {
         
         if(req.body.quantidade){
             carta.quantidade = req.body.quantidade
+        }
+        if(req.body.image){
+            carta.image = req.body.image
         }
         
         res.json(carta);
