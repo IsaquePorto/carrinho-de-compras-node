@@ -66,13 +66,19 @@ module.exports = (router) => {
     })
 
     router.delete(baseURL+'/:id', (req, res) => {
+        console.log(carrinho)
 
         const id = req.params.id
-        for (let index = 0; index < carrinho.length; index++) {
-            if (carrinho[index].id === id) {
-                carrinho.splice(index, 1)
-            }
-        }
+        const newList = carrinho.filter((card) =>card.id.toString() !== req.params.id.toString())
+        carrinho = newList
+        // for (let index = 0; index < carrinho.length; index++) {
+        //     console.log("este é o id da vez: ", carrinho[index].id)
+        //     if (carrinho[index].id === id) {
+        //         console.log('entrou no if')
+        //         carrinho.splice(index, 1)
+        //     }
+        // }
+        console.log("carrinho", carrinho)
         res.status(200).send('Deletado!')
     })
 }

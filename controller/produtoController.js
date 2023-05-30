@@ -56,7 +56,9 @@ module.exports = (router) => {
     router.delete(baseURL+'/:id', (req, res) => {
 
         const id = req.params.id
-        database.splice(getCartaById(id), 1);
+        // database.splice(getCartaById(id), 1);
+        const newList = database.filter((card) => card.id.toString() !== id.toString());
+        database = newList;
         res.status(200).send('Deletado!')
     })
 }
